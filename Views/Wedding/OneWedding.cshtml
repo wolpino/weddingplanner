@@ -1,0 +1,15 @@
+<h2>@ViewBag.weddingdeets.wedder1 & @ViewBag.weddingdeets.wedder2 are gettin' hitched!</h2>
+
+<h4>Date: @ViewBag.weddingdeets.date.ToString("D")</h4>
+
+<h3>Planner: @ViewBag.weddingdeets.Planner.first_name</h3>
+
+<h3>Guests:</h3>
+@foreach(var guest in @ViewBag.weddingdeets.Guests)
+{
+    <p>@guest.Guest.first_name @guest.Guest.last_name</p>
+}
+@if(@ViewBag.weddingdeets.Guests.Count < 1)
+{
+    <p>No Guests yet!</p>
+}

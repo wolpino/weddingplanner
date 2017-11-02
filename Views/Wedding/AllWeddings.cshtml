@@ -1,0 +1,29 @@
+@using weddingplanner.Models;
+</table>
+<table class="table table-striped">
+    <tr>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>RSVPs</th>
+        <th>Action</th>
+        
+    </tr>
+
+@foreach(Wedding wed in @ViewBag.allweddings)
+ {
+    <tr>
+        <td><a href="wedding/@wed.weddingid">@wed.wedder1 & @wed.wedder2</a></td>
+        <td>@wed.date.ToString("D")</td>
+        <td>@wed.Guests.Count</td>
+        @{
+            if(wed.Guests.Where(g => g.userid == @ViewBag.user).SingleOrDefault() == null)
+                {<td><a href="rsvp/@wed.weddingid">RSVP</a></td>}
+            else
+                {<td><a href="unrsvp/@wed.weddingid">unRSVP</a></td>}
+        }
+    </tr>
+}
+</table>
+
+<a href="addweddings">Add a Wedding!</a>
+
